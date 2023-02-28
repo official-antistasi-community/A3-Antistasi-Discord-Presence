@@ -1,0 +1,12 @@
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\bin\x86\Debug\lib\x86_64\discord_game_sdk.dll
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\bin\x86\Debug\lib\x86_64\discord_game_sdk.dll.lib
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\bin\x86\Debug\dcpr.dll
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\bin\x86\Debug\dcpr.pdb
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\bin\x86\Debug\RGiesecke.DllExport.Metadata.dll
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.csproj.AssemblyReference.cache
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.Properties.Resources.resources
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.csproj.GenerateResource.cache
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.csproj.CoreCompileInputs.cache
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.csproj.CopyComplete
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.dll
+G:\Daten-auf-G\Repos\A3-Antistasi\A3A\extensions\dcpr\obj\x86\Debug\dcpr.pdb
