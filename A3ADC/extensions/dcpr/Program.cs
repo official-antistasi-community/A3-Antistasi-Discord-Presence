@@ -12,7 +12,7 @@ class Program
     {
         //dcpr.main.Connector("init");
         string[] argsN = new string[] { "martin on Reaper" , "1", "tempMissionMP", "Competitor" , "1" , "1" };
-        dcpr.main.Connector("init");
+        test("init", new string[] {"0", "0"});
         Thread.Sleep(10000);
         test("missionstart", argsN);
         Thread.Sleep(10000);

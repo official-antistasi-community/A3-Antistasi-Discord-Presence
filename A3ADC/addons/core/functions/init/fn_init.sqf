@@ -28,6 +28,6 @@ if (isDedicated || !hasInterface) then {
 };
 
 if (!_DCI_deactiavted) then {
-    private _result = "dcpr" callExtension "init";
+    private _result = "dcpr" callExtension ["init", ["0", "0"]];
     diag_log "DCPR init completed";
 };

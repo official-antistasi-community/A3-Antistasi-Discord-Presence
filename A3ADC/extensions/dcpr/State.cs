@@ -37,6 +37,11 @@ namespace dcpr
                 testing = false
             };
             i_clientState = clientStarting;
+            i_lineMode = false;
+            i_lineModeSet = false;
+            i_assistsEnable = true;
+            i_assistsEnableSet = false;
+            i_details = "";
         }
         public struct KDA
         {
@@ -65,12 +70,38 @@ namespace dcpr
         }
 
         private static int i_clientState;
+        private static bool i_lineMode;
+        private static bool i_lineModeSet;
+        private static bool i_assistsEnable;
+        private static bool i_assistsEnableSet;
+        private static string i_details;
         private static Editor i_editor;
         private static Server i_server;
         public const int clientStarting = 0;
         public const int clientInMenu = 1;
         public const int clientOnServer = 2;
         public const int clientInEditor = 3;
+        public static string details
+        {
+            get
+            {
+                return i_details;
+            }
+        }
+        public static bool lineMode
+        {
+            get
+            {
+                return i_lineMode;
+            }
+        }
+        public static bool assistsEnable
+        {
+            get
+            {
+                return i_assistsEnable;
+            }
+        }
         public static Server server
         {
             get
@@ -84,6 +115,23 @@ namespace dcpr
             {
                 return i_clientState;
             }
+        }
+        public static void setInit(string[] args)
+        {
+            if (!i_lineModeSet)
+            {
+                i_lineMode = args[0] == "1";
+                i_lineModeSet = true;
+            }
+            if (!i_assistsEnableSet)
+            {
+                i_assistsEnable = args[1] == "1";
+                i_assistsEnableSet = true;
+            }
+        }
+        public static void setDetails(string[] args)
+        {
+            i_details = args[0];
         }
         public static void setServer(string[] input)
         {
@@ -206,7 +254,7 @@ namespace dcpr
             set
             {
                 i_server.isDead = value;
-            }            
+            }
         }
         public static bool setTest
         {

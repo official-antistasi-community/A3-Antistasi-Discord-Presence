@@ -17,6 +17,7 @@ Author: martin
 FIX_LINE_NUMBERS()
 diag_log "DCRP state changed to in mission";
 
+private _enableAssists = false;
 private _command = "missionstart";
 
 [] call DCI_fnc_initVars;
@@ -72,12 +73,7 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
         if (_killed != player) then {
             if (_instigator == player) then {
                 _kills = _kills + 1; //current kill happening not counted yet
-            } else {
-                private _assists = _killed getVariable ["DCI_assists",[]];
-                if (player in _assists) then {
-                    "dcpr" callExtension "updateassist";        
-                };
-            };
+            }
         };
         if (_killed == player) then  {
             "dcpr" callExtension "died";
@@ -98,29 +94,6 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
         "dcpr" callExtension ["updateScore", [_kills , _death]];
     }];    
 
-    addMissionEventHandler ["EntityCreated", {
-	    params ["_entity"];
-        if (A3A_DCRP_deactiavted) exitWith {};
-        if (isPlayer _entity) exitWith {};
-        if (
-            _entity isKindOf "Man" ||
-            _entity isKindOf "Car" ||
-            _entity isKindOf "Motorcycle" ||
-	        _entity isKindOf "Ship" ||
-	        _entity isKindOf "Helicopter" ||
-	        _entity isKindOf "StaticWeapon" ||
-	        _entity isKindOf "Plane"
-        ) then {
-            _entity setVariable ["DCI_assists",[],true];
-            _entity addMPEventHandler ["MPHit", {
-            	params ["_unit", "_causedBy", "_damage", "_instigator"];
-                private _var = _unit getVariable ["DCI_assists",[]];
-                _var pushBackUnique _instigator;
-                _unit setVariable ["DCI_assists", _var,true];
-            }];
-        }
-    }];
-
     if(A3A_DCRP_detectAce) then {
         ["ace_unconscious", {
             params ["_unit", "_state"];
@@ -134,5 +107,12 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
         }] call CBA_fnc_addEventHandler;
     };
 
-    [] execVM QPATHTOFOLDER(scripts\updatePlayercount.sqf);
+    [] spawn {
+        while {true} do {
+            sleep 5;
+
+            private _playerCount = playersNumber independent + playersNumber west + playersNumber east;
+            "dcpr" callExtension ["updateplayercount", [_playerCount]];
+        };
+    }
 }

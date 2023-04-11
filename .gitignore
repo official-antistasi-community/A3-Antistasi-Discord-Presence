@@ -32,5 +32,5 @@ __pycache__/
 
 # c# extensions
 
-A3A/extensions/dcpr/obj/*
-A3A/extensions/dcpr/bin/*
+A3ADC/extensions/dcpr/obj/*
+A3ADC/extensions/dcpr/bin/*

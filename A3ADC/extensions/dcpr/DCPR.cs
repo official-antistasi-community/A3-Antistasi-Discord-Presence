@@ -31,7 +31,7 @@ namespace dcpr
 #endif
         public static void RvExtensionVersion(StringBuilder output, int outputSize)
         {
-            output.Append("Test-Extension v1.0");
+            output.Append("A3A-DCPR v1.0");
         }
 
 #if WIN64

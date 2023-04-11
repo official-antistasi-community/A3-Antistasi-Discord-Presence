@@ -200,6 +200,7 @@ namespace dcpr
             switch (s.ToLower())
             {
                 case "init":
+                    State.setInit(args);
                     break;
                 case "missionstart":
                     State.setUnconState = false;
@@ -239,6 +240,9 @@ namespace dcpr
                     break;
                 case "updateplayercount":
                     State.updatePlayercount(args);
+                    break;
+                case "setDetails":
+                    State.setDetails(args);
                     break;
                 default:
                     update = false;
@@ -330,8 +334,20 @@ namespace dcpr
 
         private static void playOnServer()
         {
-            string kda = State.server.stats.Kills + "/" + State.server.stats.Death + "/" + State.server.stats.Assists;
-            string detailsStement = (State.server.isUncon ? "Unconsicous as " : (State.server.isDead ? "Dead as " : "As ")) + State.server.roleDescription + " " + kda;
+            string kda = State.server.stats.Kills + "/" + State.server.stats.Death;
+            if (State.assistsEnable)
+            {
+                kda += "/" + State.server.stats.Assists;
+            }
+            string detailsStement = "";
+            if (!State.lineMode)
+            {
+                detailsStement = (State.server.isUncon ? "Unconsicous as " : (State.server.isDead ? "Dead as " : "As ")) + State.server.roleDescription + " " + kda;
+            }
+            else
+            {
+                detailsStement = State.details;
+            }
             discordpresence = new Discord.Activity
             {
                 State = detailsStement,
