@@ -34,3 +34,4 @@ __pycache__/
 
 A3ADC/extensions/dcpr/obj/*
 A3ADC/extensions/dcpr/bin/*
+keys/*
