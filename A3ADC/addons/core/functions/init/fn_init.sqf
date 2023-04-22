@@ -16,18 +16,18 @@ Author: martin
 
 diag_log "DCPR init started";
 
-_DCI_deactiavted = false;
+_DCI_deactivated = false;
 private _productVersionArray = productVersion;
 if (_productVersionArray # 6 != "Windows") then {
-    _DCI_deactiavted = true;
+    _DCI_deactivated = true;
     diag_log "DCPR no windows detected";
 };
 if (isDedicated || !hasInterface) then {
-    _DCI_deactiavted = true;
+    _DCI_deactivated = true;
     diag_log "DCPR dedicated or no display detected";
 };
 
-if (!_DCI_deactiavted) then {
+if (!_DCI_deactivated) then {
     private _result = "dcpr" callExtension ["init", ["0", "0"]];
     diag_log "DCPR init completed";
 };

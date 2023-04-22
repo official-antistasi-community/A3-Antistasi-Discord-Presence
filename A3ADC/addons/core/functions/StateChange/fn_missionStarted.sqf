@@ -23,15 +23,15 @@ private _command = "missionstart";
 [] call DCI_fnc_initVars;
 private _productVersionArray = productVersion;
 if (_productVersionArray # 6 != "Windows") then {
-    A3A_DCRP_deactiavted = true;
+    A3A_DCRP_deactivated = true;
     diag_log  "DCPR no windows detected";
 };
 if (isDedicated || !hasInterface) then {
-    A3A_DCRP_deactiavted = true;
+    A3A_DCRP_deactivated = true;
     diag_log "DCPR dedicated or no display detected";
 };
 
-if (A3A_DCRP_deactiavted) exitWith {
+if (A3A_DCRP_deactivated) exitWith {
 	diag_log "DCPR deactiavted";
 };
 
@@ -64,8 +64,6 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
 
     addMissionEventHandler ["EntityKilled", {
         params ["_killed", "_killer", "_instigator"];
-        if (!hasInterface) exitWith {};
-        if (A3A_DCRP_deactiavted) exitWith {};
         private _stats = getPlayerScores player;
         private _kills = _stats # 0 + _stats # 1 + _stats # 2 + _stats # 3;
         if (isNull _instigator) then { _instigator = UAVControl vehicle _killer select 0 }; // UAV/UGV player operated road kill
@@ -82,10 +80,8 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
         "dcpr" callExtension ["updateScore", [_kills , _death]];
     }];
 
-    player addMPEventHandler ["MPRespawn", {
+    player addEventHandler ["Respawn", {
 	    params ["_unit", "_corpse"];
-        if (A3A_DCRP_deactiavted) exitWith {};
-        if (!hasInterface) exitWith {};
         private _stats = getPlayerScores player;
         private _kills = _stats # 0 + _stats # 1 + _stats # 2 + _stats # 3;
         private _death = _stats # 4;
