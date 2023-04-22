@@ -49,7 +49,7 @@ if (["intro", briefingName] call BIS_fnc_inString) exitWith {
 
 [] spawn {
 
-    waitUntil{!(isNil "BIS_fnc_init") && time > 0};
+    waitUntil{sleep 0.5; !(isNil "BIS_fnc_init") && time > 0 && local player};
 
     private _roleDescription = roleDescription player;
     private _typeName = [configFile >> "CfgVehicles" >> typeOf player] call BIS_fnc_displayName;
