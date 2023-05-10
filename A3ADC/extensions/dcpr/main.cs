@@ -122,11 +122,7 @@ namespace dcpr
         }
         private static void runDiscord(bool forceUpdate)
         {
-            var clientID = Environment.GetEnvironmentVariable("DISCORD_CLIENT_ID");
-            if (clientID == null)
-            {
-                clientID = "1024314409482452992";
-            }
+            var clientID = Environment.GetEnvironmentVariable("DISCORD_CLIENT_ID") ?? "1024314409482452992";
             discord = new Discord.Discord(Int64.Parse(clientID), (UInt64)Discord.CreateFlags.Default);
             discord.SetLogHook(Discord.LogLevel.Debug, (level, message) =>
             {
