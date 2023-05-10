@@ -107,12 +107,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityManager.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Core.cs" />
     <Compile Include="DCPR.cs" />
-    <Compile Include="ImageManager.cs" />
-    <Compile Include="LobbyManager.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,8 +117,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="State.cs" />
-    <Compile Include="StorageManager.cs" />
-    <Compile Include="StoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -153,6 +146,12 @@
     <Content Include="lib\x86_64\discord_game_sdk.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\discord\discord.csproj">
+      <Project>{2608b105-51f3-4fb8-b405-fd9a434b575d}</Project>
+      <Name>discord</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
